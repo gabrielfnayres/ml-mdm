@@ -251,7 +251,7 @@ class ResNet_MLX(nn.Module):
         # Handle residual connection
         if self.config.output_channels != self.config.num_channels:
             x = self.conv3(x)
-
+            
         return h + x
 
 
@@ -493,7 +493,7 @@ class ResNetBlock_MLX(nn.Module):
                 skip_input = skip_activations.pop(0)
                 x = mx.concat([x, skip_input], axis=1)
 
-            x = self.resnets[i](x, temb)
+            x = self.resnets[i].forward(x, temb)
             if self.num_attention_layers > 0:
                 L = self.num_attention_layers
                 for j in range(L):
