@@ -43,6 +43,7 @@ def init_weights(module):
 
 
 
+
 def zero_module_mlx(module):
     """
     Zero out the parameters of an MLX module and return it.
@@ -252,6 +253,7 @@ class ResNet_MLX(nn.Module):
             x = self.conv3(x)
 
         return h + x
+
 
 class SelfAttention1D_MLX(nn.Module):
     def __init__(
@@ -522,3 +524,4 @@ class ResNetBlock_MLX(nn.Module):
         if not return_activations:
             return x
         return x, activations
+

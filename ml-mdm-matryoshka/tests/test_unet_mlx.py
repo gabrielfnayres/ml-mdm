@@ -20,7 +20,6 @@ from ml_mdm.models.unet_mlx import (
     
 )
 
-
 def test_pytorch_mlp():
     """
     Simple test for our MLP implementations
@@ -68,6 +67,7 @@ def test_pytorch_mlp():
     ), "Outputs of PyTorch MLP and MLX MLP should match"
 
     print("Test passed for both PyTorch and MLX MLP!")
+
 def test_pytorch_mlx_ResNet():
     """Test that PyTorch and MLX ResNet implementations produce matching outputs."""
     # Set random seeds for reproducibility
@@ -242,6 +242,7 @@ def test_pytorch_mlx_self_attention():
 
     print("Self-attention test passed for both PyTorch and MLX!")
 
+
 def test_self_attention_1d():
     # Define parameters
     channels = 8
@@ -376,6 +377,7 @@ def test_pytorch_mlx_self_restnet_block():
 
 
 
+
 def test_pytorch_mlx_temporal_attention_block():
     """
     Test for verifying parity between PyTorch and MLX implementations of TemporalAttentionBlock.
@@ -423,7 +425,7 @@ def test_pytorch_mlx_temporal_attention_block():
     # print("mlx : ", mlx_output)
     # print("mean difference: ", np.mean(np.abs(pytorch_output.detach().numpy() - np.array(mx.stop_gradient(mlx_output)))))  #0.35
     # print("psnr: ", 10 * np.log10(np.max(pytorch_output.detach().numpy())**2 / np.mean((pytorch_output.detach().numpy() - np.array(mx.stop_gradient(mlx_output)))**2))) # 19.2 dB
-    
+
     assert pytorch_output.shape == tuple(mlx_output.shape), f"Output shape mismatch: {pytorch_output.shape} vs {mlx_output.shape}"
 
     # Increase tolerance to allow for small discrepancies in floating-point operations
